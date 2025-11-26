@@ -61,6 +61,7 @@ export default function Page() {
               </div>
             ))}
             <input
+              className="rounded-md placeholder-black text-black"
               value={input}
               onChange={(event) => {
                 setInput(event.target.value);

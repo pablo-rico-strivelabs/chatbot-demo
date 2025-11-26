@@ -11,7 +11,10 @@ export const composioInstance = new Composio({
 });
 
 // Id of the user in your system
+// TODO remove after testing
 export const externalUserId = "pg-test-0decf1db-bcb3-424d-83d7-c256c9393a1c";
 
-export const tools = await composioInstance.tools.get(externalUserId, TWITTER_TOOLS.TWITTER_FULL_ARCHIVE_SEARCH);
+export const tools = await composioInstance.tools.get(externalUserId, {
+  toolkits: [TOOLKITS.TWITTER],
+});
 

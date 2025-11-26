@@ -11,9 +11,5 @@ export async function GET(req: Request, res: Response) {
     const redirectUrl = connectionRequest.redirectUrl;
 
     if (!redirectUrl) throw new Error("No redirect URL found");
-    console.log(`Please authorize the app by visiting this URL: ${redirectUrl}`);
-
-    // wait for connection to be established
-    // await connectionRequest.waitForConnection();
     return new Response(redirectUrl);
 }

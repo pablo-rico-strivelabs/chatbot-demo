@@ -24,8 +24,6 @@ export default function Page() {
   // }, [sendMessage])
   
 
-	console.log(messages);
-
 	return (
     <div className="container max-xl mx-auto">
       <div className="grid grid-cols-3">

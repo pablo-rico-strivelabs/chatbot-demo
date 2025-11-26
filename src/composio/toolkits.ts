@@ -1,4 +1,3 @@
 export const TOOLKITS = {
-    TWITTER: "TWITTER",
-} as const
-
+	TWITTER: "TWITTER",
+} as const;

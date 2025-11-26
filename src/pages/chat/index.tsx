@@ -17,20 +17,20 @@ export default function Page() {
 	const { data } = useTools();
 
 	return (
-		<div className="container max-xl mx-auto">
+		<div className="container max-xl mx-auto mt-10">
 			<div className="grid grid-cols-3">
 				<div className="col-span-1">
-					<h4>Available Tools</h4>
+					<h4 className="text-2xl">Available Tools</h4>
 					<ul>
 						{data?.map((tool) => (
 							<li key={tool.name} title={tool.description}>
-								<strong>{tool.name}</strong>
+								{tool.name}
 							</li>
 						))}
 					</ul>
 				</div>
 				<div className="col-span-2">
-					<h2>Twitter AI Assistant</h2>
+					<h2 className="text-5xl">Twitter AI Assistant</h2>
 					{messages.map((message, index) => (
 						<div key={message.id}>
 							{message.parts.map((part) => {

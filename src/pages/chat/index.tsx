@@ -1,5 +1,6 @@
 "use client";
 
+import { useTools } from "@/src/hooks/api/useTools";
 import { useChat } from "@ai-sdk/react";
 import { VercelToolCollection } from "@composio/vercel";
 import { DefaultChatTransport } from "ai";
@@ -13,6 +14,10 @@ export default function Page() {
 			api: "/api/chat",
 		}),
 	});
+
+  const tools = useTools();
+
+  console.log("tools", tools);
 
 	// welcome message
 	// useEffect(() => {

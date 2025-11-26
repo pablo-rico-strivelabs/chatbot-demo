@@ -2,9 +2,8 @@
 
 import { useTools } from "@/src/hooks/api/useTools";
 import { useChat } from "@ai-sdk/react";
-import { VercelToolCollection } from "@composio/vercel";
 import { DefaultChatTransport } from "ai";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Page() {
 	const [input, setInput] = useState("");
@@ -15,17 +14,7 @@ export default function Page() {
 		}),
 	});
 
-  const tools = useTools();
-
-  console.log("tools", tools);
-
-	// welcome message
-	// useEffect(() => {
-	//   sendMessage({
-	//     parts: [{ type: "text", text: "Hello! What can you do for me?" }],
-	//   });
-
-	// }, [sendMessage])
+	const { data } = useTools();
 
 	return (
 		<div className="container max-xl mx-auto">
@@ -33,8 +22,11 @@ export default function Page() {
 				<div className="col-span-1">
 					<h4>Available Tools</h4>
 					<ul>
-						<li>tool1</li>
-						<li>tool2</li>
+						{data?.map((tool) => (
+							<li key={tool.name} title={tool.description}>
+								<strong>{tool.name}</strong>
+							</li>
+						))}
 					</ul>
 				</div>
 				<div className="col-span-2">

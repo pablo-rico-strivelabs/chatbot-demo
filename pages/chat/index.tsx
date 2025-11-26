@@ -5,7 +5,7 @@ import { VercelToolCollection } from "@composio/vercel";
 import { DefaultChatTransport } from "ai";
 import { useState, useEffect } from "react";
 
-export default async function Page() {
+export default function Page() {
 	const [input, setInput] = useState("");
 
 	const { messages, sendMessage } = useChat({
@@ -27,52 +27,56 @@ export default async function Page() {
 	console.log(messages);
 
 	return (
-		<div>
-      <h2 className="flex">Twitter AI Assistant</h2>
-      {/* tool list
-      <ul>
-        {toolList.tools.map((tool) => (
-          <li key={tool.name}>
-            <strong>{tool.name}</strong>: {tool.description}
-          </li>
-        ))}
-      </ul> */}
-			{messages.map((message, index) => (
-				<div key={message.id}>
-					{message.parts.map((part) => {
-						if (part.type === "text") {
-							return <div key={`${message.id}-text`}>{part.text}</div>;
-						}
-						if (part.type.startsWith("tool-")) {
-							return (
-								<div key={`${message.id}-tool`}>
-									[Tool output: {part.type}]
-									{part.output.data.data.map((item: any, idx: number) => (
-										<div key={`${message.id}-tool-item-${idx}`}>
-											{item.text}
-										</div>
-									))}
-								</div>
-							);
-						}
-						return null;
-					})}
-				</div>
-			))}
-			<input
-				value={input}
-				onChange={(event) => {
-					setInput(event.target.value);
-				}}
-				onKeyDown={async (event) => {
-					if (event.key === "Enter") {
-						sendMessage({
-							parts: [{ type: "text", text: input }],
-						});
-            setInput("");
-					}
-				}}
-			/>
-		</div>
+    <div className="container max-xl mx-auto">
+      <div className="grid grid-cols-3">
+        <div className="col-span-1">
+          <h4>Available Tools</h4>
+          <ul>
+            <li>tool1</li>
+            <li>tool2</li>
+          </ul>
+        </div>
+        <div className="col-span-2">
+            <h2>Twitter AI Assistant</h2>
+            {messages.map((message, index) => (
+              <div key={message.id}>
+                {message.parts.map((part) => {
+                  if (part.type === "text") {
+                    return <div key={`${message.id}-text`}>{part.text}</div>;
+                  }
+                  if (part.type.startsWith("tool-")) {
+                    return (
+                      <div key={`${message.id}-tool`}>
+                        [Tool output: {part.type}]
+                        {part.output.data.data.map((item: any, idx: number) => (
+                          <div key={`${message.id}-tool-item-${idx}`}>
+                            {item.text}
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            ))}
+            <input
+              value={input}
+              onChange={(event) => {
+                setInput(event.target.value);
+              }}
+              onKeyDown={async (event) => {
+                if (event.key === "Enter") {
+                  sendMessage({
+                    parts: [{ type: "text", text: input }],
+                  });
+                  setInput("");
+                }
+              }}
+            />
+          </div>
+        </div>
+
+    </div>
 	);
 }

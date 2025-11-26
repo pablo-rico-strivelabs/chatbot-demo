@@ -1,6 +1,6 @@
 import { composioInstance, externalUserId } from "@/src/composio/config";
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
     const connectionRequest = await composioInstance.connectedAccounts.link(
         externalUserId,
         process.env.TWITTER_AUTH_CONFIG_ID || "",

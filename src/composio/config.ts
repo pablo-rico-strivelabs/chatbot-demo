@@ -1,9 +1,6 @@
 import { Composio } from "@composio/core";
 import { VercelProvider } from "@composio/vercel";
-import { generateText, streamText } from "ai";
-import { openai } from "@ai-sdk/openai";
 import { TOOLKITS } from "./toolkits";
-import { TWITTER_TOOLS } from "./twitterTools";
 
 export const composioInstance = new Composio({
   apiKey: process.env.COMPOSIO_API_KEY,

@@ -3,7 +3,7 @@ import { composioInstance, externalUserId } from "@/src/composio/config";
 export async function GET() {
 	const connectionRequest = await composioInstance.connectedAccounts.link(
 		externalUserId,
-		process.env.TWITTER_AUTH_CONFIG_ID || "",
+		process.env.GMAIL_AUTH_CONFIG_ID || "",
 		{ callbackUrl: "http://localhost:3000/chat" },
 	);
 

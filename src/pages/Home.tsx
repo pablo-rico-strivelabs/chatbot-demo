@@ -1,5 +1,3 @@
-import LoginButton from "@/src/components/LoginButton";
-
 export default function Home() {
 	const requestLoginUrl = async () => {
 		const response = await fetch("/api/login");
@@ -9,7 +7,9 @@ export default function Home() {
 	return (
 		<main>
 			<h1>Welcome to Chatbot Demo</h1>
-			<LoginButton onClick={requestLoginUrl} />
+			<button type="button" onClick={requestLoginUrl}>
+				Login with Twitter
+			</button>
 		</main>
 	);
 }

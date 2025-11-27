@@ -1,9 +1,9 @@
 "use client";
 
-import { useTools } from "@/src/hooks/api/useTools";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useState } from "react";
+import { useTools } from "@/src/hooks/api/useTools";
 
 export default function Page() {
 	const [input, setInput] = useState("");

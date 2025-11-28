@@ -1,6 +1,6 @@
+import type { UIMessage } from "@ai-sdk/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { UIMessage } from "@ai-sdk/react";
 
 export function Message({ role, parts }: UIMessage) {
 	return (

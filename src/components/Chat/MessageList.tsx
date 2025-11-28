@@ -1,7 +1,7 @@
+import type { UIMessage } from "ai";
 import { useEffect, useRef } from "react";
 import { EmptyState } from "./EmptyState";
 import { Message } from "./Message";
-import type { UIMessage } from "ai";
 
 interface MessageListProps {
 	messages: UIMessage[];

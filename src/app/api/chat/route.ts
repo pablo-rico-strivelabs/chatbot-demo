@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 		tools: {
 			...composioTools,
 			addResource: tool({
-				description: `add a resource to your CV database.
+				description: `Add a resource to your CV database.
           If the user provides a random text, use this tool without asking for confirmation.`,
 				inputSchema: z.object({
 					content: z
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
 				},
 			}),
 			getInformation: tool({
-				description: `get information from your CV database to answer questions.`,
+				description: `Get information from your CV database to answer questions.`,
 				inputSchema: z.object({
 					question: z.string().describe("the users question"),
 				}),

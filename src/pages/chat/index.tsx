@@ -47,10 +47,11 @@ export default function Page() {
 		const textObjects: TextUIPart[] = await filesToTextUIPart(files);
 
 		await sendMessage({
+			role: "system",
 			parts: [
 				{
 					type: "text",
-					text: "Extract the text from these files and add them to the database",
+					text: "Extract the text from these files and add them to the database and respond to the user accordingly.",
 				},
 				...fileObjects,
 				...textObjects,

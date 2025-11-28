@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import type { ChatMessage } from "@/src/types/chat";
 import { EmptyState } from "./EmptyState";
 import { Message } from "./Message";
+import type { UIMessage } from "ai";
 
 interface MessageListProps {
-	messages: ChatMessage[];
+	messages: UIMessage[];
 }
 
 export function MessageList({ messages }: MessageListProps) {

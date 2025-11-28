@@ -1,14 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import type { MessagePart } from "@/src/types/chat";
+import type { UIMessage } from "@ai-sdk/react";
 
-interface MessageProps {
-	id: string;
-	role: "system" | "user" | "assistant";
-	parts: MessagePart[];
-}
-
-export function Message({ role, parts }: MessageProps) {
+export function Message({ role, parts }: UIMessage) {
 	return (
 		<div
 			className={`flex ${role === "user" ? "justify-end" : "justify-start"}`}

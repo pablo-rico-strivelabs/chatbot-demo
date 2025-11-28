@@ -10,10 +10,9 @@ import remarkGfm from "remark-gfm";
 export default function Page() {
 	const [input, setInput] = useState("");
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 
-	const { messages, sendMessage } = useChat({
+	const { messages, sendMessage, status } = useChat({
 		transport: new DefaultChatTransport({
 			api: "/api/chat",
 		}),
@@ -22,26 +21,25 @@ export default function Page() {
 		},
 		onError: (err) => {
 			console.error("Chat error:", err);
-			setIsLoading(false);
 		},
 		onFinish: (data) => {
 			console.log("Chat finished:", data);
-			setIsLoading(false);
 		},
 	});
+
+	const isLoading = ["submitting", "streaming"].includes(status);
 
 	const { data: tools } = useTools();
 
 	// Auto-scroll to bottom when new messages arrive
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <we need to only track messages.length>
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [messages.length]);
 
 	const handleSendMessage = async () => {
 		if (!input.trim()) return;
 
-		setIsLoading(true);
 		await sendMessage({
 			parts: [{ type: "text", text: input }],
 		});
@@ -108,6 +106,7 @@ export default function Page() {
 							{tools.map((tool) => (
 								<div
 									key={tool.name}
+									title={tool.description}
 									className="p-3 rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
 								>
 									<h3 className="font-medium text-gray-900 dark:text-white text-sm">

@@ -31,7 +31,7 @@ export function Header({ onMenuClick, isLoading }: HeaderProps) {
 					</svg>
 				</button>
 				<h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-					AI Assistant
+					AI Powered Recruitment Outreach
 				</h1>
 			</div>
 			<div className="flex items-center space-x-2">

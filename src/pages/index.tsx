@@ -14,7 +14,7 @@ export default function Home() {
 					<h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white font-sans tracking-tight">
 						AI-Powered
 						<span className="block text-blue-600 dark:text-blue-400">
-							Gmail Assistant
+							Recruitment Outreach
 						</span>
 					</h1>
 					<p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">

@@ -1,4 +1,5 @@
 import type React from "react";
+import { FileUploadButton } from "./FileUploadButton";
 import { LoadingSpinner } from "./LoadingSpinner";
 
 interface InputAreaProps {
@@ -6,6 +7,7 @@ interface InputAreaProps {
 	onInputChange: (value: string) => void;
 	onSend: () => void;
 	isLoading: boolean;
+	onFileUpload?: (files: FileList) => void;
 }
 
 export function InputArea({
@@ -13,6 +15,7 @@ export function InputArea({
 	onInputChange,
 	onSend,
 	isLoading,
+	onFileUpload,
 }: InputAreaProps) {
 	const handleKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === "Enter" && !event.shiftKey) {
@@ -24,6 +27,10 @@ export function InputArea({
 	return (
 		<div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
 			<div className="flex space-x-3">
+				{onFileUpload && (
+					<FileUploadButton onFileUpload={onFileUpload} isLoading={isLoading} />
+				)}
+
 				<div className="flex-1 relative">
 					<textarea
 						value={input}

@@ -37,6 +37,22 @@ export default function Page() {
 		setInput("");
 	};
 
+	const handleFileUpload = async (files: FileList) => {
+		const fileArray = Array.from(files);
+		console.log("Files uploaded:", fileArray);
+
+		// For now, just log the files. You can implement actual file upload logic here
+		// such as uploading to a cloud service, converting to base64, etc.
+
+		// Example: Add file information to the chat
+		const fileNames = fileArray.map((file) => file.name).join(", ");
+		const fileMessage = `📎 Uploaded files: ${fileNames}`;
+
+		await sendMessage({
+			parts: [{ type: "text", text: fileMessage }],
+		});
+	};
+
 	return (
 		<div className="flex h-screen bg-gray-50 dark:bg-gray-900">
 			<Sidebar
@@ -58,6 +74,7 @@ export default function Page() {
 					onInputChange={setInput}
 					onSend={handleSendMessage}
 					isLoading={isLoading}
+					onFileUpload={handleFileUpload}
 				/>
 			</div>
 		</div>

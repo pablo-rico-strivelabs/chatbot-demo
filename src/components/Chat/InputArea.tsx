@@ -8,7 +8,12 @@ interface InputAreaProps {
 	isLoading: boolean;
 }
 
-export function InputArea({ input, onInputChange, onSend, isLoading }: InputAreaProps) {
+export function InputArea({
+	input,
+	onInputChange,
+	onSend,
+	isLoading,
+}: InputAreaProps) {
 	const handleKeyDown = (event: React.KeyboardEvent) => {
 		if (event.key === "Enter" && !event.shiftKey) {
 			event.preventDefault();

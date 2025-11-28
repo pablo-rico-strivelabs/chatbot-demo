@@ -1,4 +1,3 @@
-import { VercelToolCollection } from "@composio/vercel";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWrapper } from "@/src/utils/request";
 

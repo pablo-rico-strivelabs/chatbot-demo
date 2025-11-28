@@ -3,8 +3,8 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useState } from "react";
+import { Header, InputArea, MessageList, Sidebar } from "@/src/components/Chat";
 import { useTools } from "@/src/hooks/api/useTools";
-import { Sidebar, Header, MessageList, InputArea } from "@/src/components/Chat";
 
 export default function Page() {
 	const [input, setInput] = useState("");

@@ -1,4 +1,3 @@
-import { openai } from "@ai-sdk/openai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { embed, embedMany } from "ai";
 import { cosineDistance, desc, gt, sql } from "drizzle-orm";
@@ -45,7 +44,9 @@ export const generateEmbeddingsFromInputs = async (
 	return embeddings.map((e, i) => ({ content: chunks[i], embedding: e }));
 };
 
-export const generateEmbeddingFromPrompt = async (value: string): Promise<number[]> => {
+export const generateEmbeddingFromPrompt = async (
+	value: string,
+): Promise<number[]> => {
 	const input = value.replaceAll("\n", " ");
 	const { embedding } = await embed({
 		model: embeddingModel,

@@ -1,5 +1,5 @@
-import { composioInstance, externalUserId, tools } from "@/src/composio/config";
+import { tools } from "@/src/composio/config";
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
 	return new Response(JSON.stringify({ toolList: tools }));
 }

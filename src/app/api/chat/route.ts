@@ -1,7 +1,12 @@
-import { openai } from "@ai-sdk/openai";
-import { tool, convertToModelMessages, streamText, type UIMessage, stepCountIs } from "ai";
-import { tools as composioTools } from "@/src/composio/config";
+import {
+	convertToModelMessages,
+	stepCountIs,
+	streamText,
+	tool,
+	type UIMessage,
+} from "ai";
 import { z } from "zod";
+import { tools as composioTools } from "@/src/composio/config";
 import { createResource } from "@/src/lib/actions/resources";
 import { findRelevantContent } from "@/src/lib/ai/embedding";
 

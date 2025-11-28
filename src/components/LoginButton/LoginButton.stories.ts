@@ -1,5 +1,5 @@
 // story book file for LoginButton component
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta } from "@storybook/nextjs-vite";
 import { fn } from "storybook/test";
 import LoginButton from "./LoginButton";
 

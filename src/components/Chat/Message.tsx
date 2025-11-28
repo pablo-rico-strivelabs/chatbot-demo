@@ -11,9 +11,7 @@ interface MessageProps {
 export function Message({ role, parts }: MessageProps) {
 	return (
 		<div
-			className={`flex ${
-				role === "user" ? "justify-end" : "justify-start"
-			}`}
+			className={`flex ${role === "user" ? "justify-end" : "justify-start"}`}
 		>
 			<div
 				className={`
@@ -82,9 +80,7 @@ export function Message({ role, parts }: MessageProps) {
 												</h2>
 											),
 											h3: ({ children }) => (
-												<h3 className="text-md font-medium mb-2">
-													{children}
-												</h3>
+												<h3 className="text-md font-medium mb-2">{children}</h3>
 											),
 											blockquote: ({ children }) => (
 												<blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-2 italic">

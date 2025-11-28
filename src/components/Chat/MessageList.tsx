@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { Message } from "./Message";
-import { EmptyState } from "./EmptyState";
 import type { ChatMessage } from "@/src/types/chat";
+import { EmptyState } from "./EmptyState";
+import { Message } from "./Message";
 
 interface MessageListProps {
 	messages: ChatMessage[];
@@ -42,9 +42,7 @@ export function MessageList({ messages }: MessageListProps) {
 			) : (
 				messages
 					.filter((message) => message.role !== "system")
-					.map((message) => (
-						<Message key={message.id} {...message} />
-					))
+					.map((message) => <Message key={message.id} {...message} />)
 			)}
 			<div ref={messagesEndRef} />
 		</div>

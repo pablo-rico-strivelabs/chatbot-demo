@@ -1,10 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
+import { DefaultChatTransport, FileUIPart, TextUIPart } from "ai";
 import { useState } from "react";
 import { Header, InputArea, MessageList, Sidebar } from "@/src/components/Chat";
 import { useTools } from "@/src/hooks/api/useTools";
+import { filesToFileUIPart, filesToTextUIPart } from "@/src/utils/files";
 
 export default function Page() {
 	const [input, setInput] = useState("");
@@ -41,15 +42,19 @@ export default function Page() {
 		const fileArray = Array.from(files);
 		console.log("Files uploaded:", fileArray);
 
-		// For now, just log the files. You can implement actual file upload logic here
-		// such as uploading to a cloud service, converting to base64, etc.
-
-		// Example: Add file information to the chat
-		const fileNames = fileArray.map((file) => file.name).join(", ");
-		const fileMessage = `📎 Uploaded files: ${fileNames}`;
+		const fileObjects: FileUIPart[] = await filesToFileUIPart(files);
+		// for some reason the model doesn't accept plain text files https://github.com/vercel/ai/issues/7399
+		const textObjects: TextUIPart[] = await filesToTextUIPart(files);
 
 		await sendMessage({
-			parts: [{ type: "text", text: fileMessage }],
+			parts: [
+				{
+					type: "text",
+					text: "Extract the text from these files and add them to the database",
+				},
+				...fileObjects,
+				...textObjects,
+			],
 		});
 	};
 

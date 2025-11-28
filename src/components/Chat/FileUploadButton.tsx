@@ -51,10 +51,10 @@ export function FileUploadButton({
 				type="button"
 				onClick={triggerFileUpload}
 				disabled={disabled || isLoading}
-				className="px-3 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 
+				className="px-4 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 
 					text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200 
 					focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-					disabled:opacity-50 disabled:cursor-not-allowed flex items-center cursor-pointer"
+					disabled:opacity-50 disabled:cursor-not-allowed flex items-center cursor-pointer max-h-50"
 				title="Upload files"
 			>
 				<svg

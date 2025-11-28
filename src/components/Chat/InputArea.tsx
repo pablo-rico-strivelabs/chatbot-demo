@@ -28,7 +28,11 @@ export function InputArea({
 		<div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
 			<div className="flex space-x-3">
 				{onFileUpload && (
-					<FileUploadButton onFileUpload={onFileUpload} isLoading={isLoading} />
+					<FileUploadButton
+						accept=".pdf,.txt"
+						onFileUpload={onFileUpload}
+						isLoading={isLoading}
+					/>
 				)}
 
 				<div className="flex-1 relative">
@@ -60,7 +64,7 @@ export function InputArea({
 					className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-600 
 						text-white rounded-lg transition-colors duration-200 
 						focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-						disabled:cursor-not-allowed flex items-center space-x-2"
+						disabled:cursor-not-allowed flex items-center space-x-2 max-h-50"
 				>
 					{isLoading ? (
 						<LoadingSpinner />
